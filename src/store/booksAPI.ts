@@ -9,11 +9,11 @@ export const booksAPI = createApi({
                 value,
                 startIndex,
                 category,
-                sortingBy
+                orderBy
             }) => 
-                `volumes?q=${value}${category !== 'all' && `+subject:${category}`}&maxResults=30&startIndex=${startIndex}&orderBy=${sortingBy}`
+                `volumes?q=${value}${category !== 'all' && `+subject:${category}`}&maxResults=30&startIndex=${startIndex}&orderBy=${orderBy}`
         })
     })
 })
 
-export const { useGetBooksByParamsQuery } = booksAPI
+export const { useGetBooksByParamsQuery, useLazyGetBooksByParamsQuery } = booksAPI

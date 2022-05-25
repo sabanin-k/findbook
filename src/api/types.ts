@@ -1,15 +1,15 @@
-export type SearchResponse = {
+export interface ISearchResponse{
     kind: string
     totalItems: number
-    items: Book[]
+    items: IBook[]
 }
 
-export type Book = {
+export interface IBook{
     kind: string
     id: string
     etag: string
     selfLink: string
-    volumeInfo: VolumeInfo
+    volumeInfo: IVolumeInfo
     saleInfo: SaleInfo
     accessInfo: AccessInfo
     searchInfo: {
@@ -18,7 +18,7 @@ export type Book = {
 }
 
 
-type VolumeInfo = {
+interface IVolumeInfo{
     title: string
     authors: string[]
     publisher: string
@@ -40,27 +40,27 @@ type VolumeInfo = {
     canonicalVolumeLink: string
 }
 
-type IndustryIdentifier = {
+interface IndustryIdentifier{
     type: string
     identifier: string
 }
 
-type ReadingModes = {
+interface ReadingModes{
     text: boolean
     image: boolean
 }
 
-type PanelizationSummary = {
+interface PanelizationSummary{
     containsEpubBubbles: boolean
     containsImageBubbles: boolean
 }
 
-type ImageLinks = {
+interface ImageLinks{
     smallThumbnail: string
     thumbnail: string
 }
 
-type SaleInfo = {
+interface SaleInfo{
     country: string
     saleability: string
     isEbook: boolean,
@@ -70,18 +70,18 @@ type SaleInfo = {
     offers: Offer[]
 }
 
-type Price = {
+interface Price{
     amount: number
     currencyCode: string
 }
 
-type Offer = {
+interface Offer{
     finskyOfferType: number
     listPrice: Price
     retailPrice: Price
 }
 
-type AccessInfo = {
+interface AccessInfo{
     country: string
     viewability: string
     embeddable: boolean
@@ -94,7 +94,7 @@ type AccessInfo = {
     quoteSharingAllowed: boolean
 }
 
-type AccessFormat = {
+interface AccessFormat{
     isAvailable: boolean
     acsTokenLink: string
 }
