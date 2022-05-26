@@ -12,8 +12,15 @@ export const booksAPI = createApi({
                 orderBy
             }) => 
                 `volumes?q=${value}${category !== 'all' && `+subject:${category}`}&maxResults=30&startIndex=${startIndex}&orderBy=${orderBy}`
+        }),
+        getBookById: builder.query({
+            query: (id: string) => `volumes/${id}`
         })
     })
 })
 
-export const { useGetBooksByParamsQuery, useLazyGetBooksByParamsQuery } = booksAPI
+export const {
+    useGetBooksByParamsQuery,
+    useLazyGetBooksByParamsQuery,
+    useGetBookByIdQuery
+} = booksAPI

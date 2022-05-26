@@ -1,10 +1,10 @@
-export interface ISearchResponse{
+export interface ISearchResponse {
     kind: string
     totalItems: number
     items: IBook[]
 }
 
-export interface IBook{
+export interface IBook {
     kind: string
     id: string
     etag: string
@@ -18,7 +18,7 @@ export interface IBook{
 }
 
 
-interface IVolumeInfo{
+interface IVolumeInfo {
     title: string
     authors: string[]
     publisher: string
@@ -40,27 +40,27 @@ interface IVolumeInfo{
     canonicalVolumeLink: string
 }
 
-interface IndustryIdentifier{
+interface IndustryIdentifier {
     type: string
     identifier: string
 }
 
-interface ReadingModes{
+interface ReadingModes {
     text: boolean
     image: boolean
 }
 
-interface PanelizationSummary{
+interface PanelizationSummary {
     containsEpubBubbles: boolean
     containsImageBubbles: boolean
 }
 
-interface ImageLinks{
+interface ImageLinks {
     smallThumbnail: string
     thumbnail: string
 }
 
-interface SaleInfo{
+interface SaleInfo {
     country: string
     saleability: string
     isEbook: boolean,
@@ -70,18 +70,18 @@ interface SaleInfo{
     offers: Offer[]
 }
 
-interface Price{
+interface Price {
     amount: number
     currencyCode: string
 }
 
-interface Offer{
+interface Offer {
     finskyOfferType: number
     listPrice: Price
     retailPrice: Price
 }
 
-interface AccessInfo{
+interface AccessInfo {
     country: string
     viewability: string
     embeddable: boolean
@@ -94,7 +94,7 @@ interface AccessInfo{
     quoteSharingAllowed: boolean
 }
 
-interface AccessFormat{
+interface AccessFormat {
     isAvailable: boolean
     acsTokenLink: string
 }

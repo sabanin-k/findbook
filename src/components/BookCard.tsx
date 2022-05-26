@@ -19,6 +19,7 @@ export const BookCard: FC<Props> = ({ book }) => {
                 display='flex'
                 flexDirection='column'
                 justifyContent='space-around'
+                sx={{ boxShadow:'5px 5px 10px rgba(70,70,70,0.12)' }}
             >
 
                 <Box

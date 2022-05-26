@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { FC } from "react";
 import { Route, Routes } from "react-router-dom";
-import { BookModal } from "./pages/BookModal";
+import { Book } from "./pages/Book";
 import { Home } from "./pages/Home";
 
 const App: FC = () => {
@@ -14,7 +14,7 @@ const App: FC = () => {
         >
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path=':bookId' element={<BookModal />} />
+                <Route path=':bookId' element={<Book />} />
             </Routes>
             
         </Box>

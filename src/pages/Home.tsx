@@ -1,4 +1,4 @@
-import { Box, Button, colors, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { IBook } from "../api/types";
 import { BookCard } from "../components/BookCard";
@@ -7,7 +7,7 @@ import { SelectCategories } from "../components/SelectCategories";
 import { SelectSorting } from "../components/SelectSorting";
 import { useGetBooksByParamsQuery, useLazyGetBooksByParamsQuery } from "../store/booksAPI";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { increaseStartIndex, selectCategory, selectSearchValue, selectOrder, selectStartIndex } from "../store/reducers/app";
+import { increaseStartIndex, selectCategory, selectOrder, selectSearchValue, selectStartIndex } from "../store/reducers/app";
 
 export const Home: FC = () => {
     const dispatch = useAppDispatch()
@@ -27,11 +27,6 @@ export const Home: FC = () => {
     }, [data, dispatch])
 
     const [fetchBooks] = useLazyGetBooksByParamsQuery()
-
-    const handleLoadMore = () => {
-        // TODO add load more logic
-
-    }
 
     return (
         <Box
