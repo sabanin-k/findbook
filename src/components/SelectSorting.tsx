@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { resetStartIndex, selectOrder, setOrder } from '../store/reducers/app'
+import { resetStartIndex, selectOrder, setOrder } from '../store/reducers/appReducer'
 import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 
 export const SelectSorting: FC<Props> = ({ selectValues }) => {
@@ -16,7 +16,7 @@ export const SelectSorting: FC<Props> = ({ selectValues }) => {
                 value={sortingValue}
                 onChange={(e) => {
                     dispatch(setOrder(e.target.value))
-                    dispatch(resetStartIndex)
+                    dispatch(resetStartIndex())
                 }}
             >
                 {selectValues.map((selectValue, index) => {

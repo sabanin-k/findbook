@@ -1,6 +1,6 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { booksAPI } from "./booksAPI";
-import { appReducer } from './reducers/app'
+import { appReducer } from './reducers/appReducer'
 
 export const store = configureStore({
     reducer: {

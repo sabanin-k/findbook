@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
-import { resetStartIndex, selectCategory, setCategory } from '../store/reducers/app'
+import { resetStartIndex, selectCategory, setCategory } from '../store/reducers/appReducer'
 import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 
 export const SelectCategories: FC<Props> = ({ selectValues }) => {
@@ -15,7 +15,7 @@ export const SelectCategories: FC<Props> = ({ selectValues }) => {
                 value={category}
                 onChange={(e) => {
                     dispatch(setCategory(e.target.value))
-                    dispatch(resetStartIndex)
+                    dispatch(resetStartIndex())
                 }}
             >
                 {selectValues.map((selectValue, index) => {

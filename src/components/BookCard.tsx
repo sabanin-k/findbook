@@ -30,7 +30,7 @@ export const BookCard: FC<Props> = ({ book }) => {
                         component='img'
                         maxWidth='100px'
                         boxShadow={2}
-                        src={book.volumeInfo.imageLinks.smallThumbnail}
+                        src={book.volumeInfo.imageLinks.thumbnail}
                     />
                 </Box>
                 <Box>

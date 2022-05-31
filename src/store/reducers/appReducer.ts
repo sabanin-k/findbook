@@ -27,6 +27,12 @@ const appSlice = createSlice({
         orderBy: 'relevance' || 'newest'
     },
     reducers: {
+        setBooks: (state, action: PayloadAction<IBook[]>) => {
+            state.books = action.payload
+        },
+        loadMoreBooks: (state, action: PayloadAction<IBook[]>) => {
+            state.books = [...state.books, ...action.payload]
+        },        
         increaseStartIndex: (state) => {
             state.startIndex += 30
         },
@@ -42,7 +48,9 @@ const appSlice = createSlice({
         setSearchValue: (state, action: PayloadAction<string>) => {
             state.searchValue = action.payload
         },
-        
+        setError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload
+        }
     },
     // extraReducers: {
     //     [fetchBooksSearch.fulfilled.type]: (state, action: PayloadAction<Book[]>) => {
@@ -59,17 +67,21 @@ const appSlice = createSlice({
     // }
 })
 
+export const selectBooks = (state: RootState) => state.appReducer.books
 export const selectCategory = (state: RootState) => state.appReducer.category
 export const selectOrder = (state: RootState) => state.appReducer.orderBy
 export const selectSearchValue = (state: RootState) => state.appReducer.searchValue
 export const selectStartIndex = (state: RootState) => state.appReducer.startIndex
 
 export const {
+    setBooks,
+    loadMoreBooks,
     increaseStartIndex,
     resetStartIndex,
     setCategory,
     setOrder,
     setSearchValue,
+    setError,
 } = appSlice.actions
 
 export const appReducer = appSlice.reducer

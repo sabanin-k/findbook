@@ -7,7 +7,7 @@ import { SelectCategories } from "../components/SelectCategories";
 import { SelectSorting } from "../components/SelectSorting";
 import { useGetBooksByParamsQuery, useLazyGetBooksByParamsQuery } from "../store/booksAPI";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
-import { increaseStartIndex, selectCategory, selectOrder, selectSearchValue, selectStartIndex } from "../store/reducers/app";
+import { increaseStartIndex, selectBooks, selectCategory, selectOrder, selectSearchValue, selectStartIndex } from "../store/reducers/appReducer";
 
 export const Home: FC = () => {
     const dispatch = useAppDispatch()
@@ -16,17 +16,17 @@ export const Home: FC = () => {
     const orderBy = useAppSelector(selectOrder)
     const startIndex = useAppSelector(selectStartIndex)
     const value = useAppSelector(selectSearchValue)
-    const [books, setBooks] = useState([])
+    const books = useAppSelector(selectBooks)
 
-    const { data, isLoading } = useGetBooksByParamsQuery({ category, orderBy, value, startIndex })
-    useEffect(() => {
-        if (data) {
-            setBooks(data.items)
-            dispatch(increaseStartIndex)
-        }
-    }, [data, dispatch])
+    useGetBooksByParamsQuery({ category, orderBy, value, startIndex })
+    // useEffect(() => {
+    //     if (data) {
+    //         setBooks(data.items)
+    //         dispatch(increaseStartIndex)
+    //     }
+    // }, [data, dispatch])
 
-    const [fetchBooks] = useLazyGetBooksByParamsQuery()
+    const [fetchBooks, isLoading] = useLazyGetBooksByParamsQuery()
 
     return (
         <Box
@@ -41,7 +41,7 @@ export const Home: FC = () => {
             >
                 Findbook!
             </Typography>
-            <SearchInput />
+            <SearchInput fetchBooks={fetchBooks} />
             <Box
                 display='flex'
                 justifyContent='space-around'
@@ -62,25 +62,24 @@ export const Home: FC = () => {
                 marginTop='20px'
             >
                 {books.length
-                    ? books.map((book: IBook) => {
+                    ? books?.map((book: IBook) => {
                         return (
                             <Box
+                                key={book.id}
                                 display='flex'
                                 flexDirection='row'
                                 alignItems='baseline'
                                 flexWrap='wrap'
                             >
-                                <BookCard key={book.id} book={book} />
+                                <BookCard book={book} />
                             </Box>
                         )
                     })
                     : !isLoading && <p>Ничего нет</p>}
             </Box>
-            <Button
-                onClick={fetchBooks}
-            >
+            {<Button>
                 Загрузть еще
-            </Button>
+            </Button>}
         </Box>
     );
 }
